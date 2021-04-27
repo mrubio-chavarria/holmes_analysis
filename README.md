@@ -4,7 +4,7 @@ In this session we are going to reproduce the study of different cell population
 
 ## R requirements
 
-The requirements stated below work with R 4.0.5 and the matrix product libraries BLAS and LAPACK (usually installed by default). You can study the loaded packages with the R command sessionInfo().
+The requirements stated below work with R 4.0.5 and the matrix product libraries BLAS and LAPACK (usually installed by default). You can study the loaded packages with the R command *sessionInfo()*.
 
 - qusage == 2.24.0
 - data.table == 1.14.0
