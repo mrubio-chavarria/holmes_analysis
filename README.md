@@ -25,4 +25,4 @@ The software used to perform the analysis can be downloaded here:
 ## Additional notes
 
 - **All the files** to conduct the analysis are already in the **repository** folders and can be generated with the code. 
-- The code in the **notebook** is the same as the one in main.R, so **it is not needed** to conduct the analysis.
+- The code in the **notebook** is the same as the one in main.R, so **the notebook is not needed** to conduct the analysis.
