@@ -109,13 +109,13 @@ ko_vs_wt$adjusted.p.value <- p.adjust(ko_vs_wt$p.value, method = 'BH')
 head(ko_vs_wt)
 
 # Select relevant genes to highlight
+ko_vs_wt$mlog10PValue  <- -log10(ko_vs_wt$p.value)
 relevants <- ko_vs_wt[ko_vs_wt$adjusted.p.value <= 0.05, ]
 relevants <- relevants[order(-abs(relevants$mean_diff)), ]
 relevants <- relevants[1:25, ]
 relevants <- relevants[!is.na(relevants$Gene_symbol), ]
 
 # Volcano plot
-ko_vs_wt$mlog10PValue  <- -log10(ko_vs_wt$p.value)
 options(repr.plot.width=25, repr.plot.height=10)
 ko_vs_wt %>% 
   ggplot + 
@@ -155,13 +155,13 @@ t_vs_ut$adjusted.p.value <- p.adjust(t_vs_ut$p.value, method = 'BH')
 head(t_vs_ut)
 
 # Select relevant genes to highlight
+t_vs_ut$mlog10PValue  <- -log10(t_vs_ut$p.value)
 relevants <- t_vs_ut[t_vs_ut$adjusted.p.value <= 0.05, ]
 relevants <- relevants[order(-abs(relevants$mean_diff)), ]
 relevants <- relevants[1:25, ]
 relevants <- relevants[!is.na(relevants$Gene_symbol), ]
 
 # Volcano plot
-t_vs_ut$mlog10PValue  <- -log10(t_vs_ut$p.value)
 options(repr.plot.width=25, repr.plot.height=10)
 t_vs_ut %>% 
   ggplot + 
@@ -221,7 +221,7 @@ relevant_hyper_results
 
 
 ################################################################################
-# PREPARE FILE FOR GSEA
+# PREPARE FILES FOR GSEA
 ################################################################################
 
 # Prepare the input
@@ -231,7 +231,7 @@ t_vs_unt_gsea_input <- cbind(t_vs_unt_gsea_input[, 1],
                              t_vs_unt_gsea_input[, 2:21])
 colnames(t_vs_unt_gsea_input)[1:2] <- c("NAME", "DESCRIPTION")
 t_vs_unt_gsea_input <- t_vs_unt_gsea_input[t_vs_unt_gsea_input$NAME != '', ]
-write.table(t_vs_unt_gsea_input, 'gsea_input.txt', sep='\t', quote = F, row.names = F)
+write.table(t_vs_unt_gsea_input, 'gsea_input/gsea_input.txt', sep='\t', quote = F, row.names = F)
 
 # Prepare the labels
 experimental_group <- substr(colnames(t_vs_unt_gsea_input)[3:22], 15, 23)
@@ -240,7 +240,7 @@ num_classes = 2  # Treated and untreated
 first_line <- as.character(c(num_samples, num_classes, 1))
 second_line <- paste(c('#', unique(experimental_group)), collapse=' ')
 third_line <- experimental_group
-labels_file <- file('gsea_labels.cls')
+labels_file <- file('gsea_input/gsea_labels.cls')
 open(labels_file, 'w')
 for(line in list(first_line, second_line, third_line)){
   line = paste(line, collapse=' ')
