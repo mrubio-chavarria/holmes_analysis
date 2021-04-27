@@ -1,6 +1,6 @@
 # DS Helper Team: GSEA
 
-In this session we are going to reproduce the study of different cell populations through linear models and GSEA. To follow the session you will need the GSEA software and R properly configured. The analysis has been conducted with the configuration described below, however, other configurations might work as well.
+In this session we are going to reproduce the study of different cell populations through GSEA. To follow the session you will need the GSEA software and R properly configured. The analysis has been conducted with the configuration described below, however, other configurations might work as well.
 
 ## R requirements
 
